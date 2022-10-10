@@ -11,7 +11,7 @@ const Dashboard = () => {
         <h4>Доброе, timeflyeswhenyouhf@internet.ru</h4>
       </Pod>
       <Carous>
-        <CarouselPod><h2>101</h2></CarouselPod>
+        <CarouselPod><h3>shall will</h3><p>будущее время</p></CarouselPod>
         <CarouselPod><h2>9932</h2></CarouselPod>
         <CarouselPod><h2>dae</h2></CarouselPod>
         <CarouselPod><h2>abnc</h2></CarouselPod>

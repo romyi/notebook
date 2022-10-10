@@ -12,14 +12,14 @@ const carouselReducer = (state: any, action: any) => {
       if (state.ix !== 4) {
         return {
           ix: state.ix + 1,
-          delta: state.delta - 180
+          delta: state.delta - 414
         }
       } else return state
     case 'right':
       if (state.ix !== 1) {
         return {
           ix: state.ix - 1,
-          delta: state.delta + 180
+          delta: state.delta + 414
         }
       } else return state
     default:
@@ -28,10 +28,11 @@ const carouselReducer = (state: any, action: any) => {
 }
 
 const Carous = ({children}: ICarous) => {
-const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 1}) 
+  const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 1}) 
   const handlers = useSwipeable({
-    onSwipedLeft: () => {
+    onSwipedLeft: (e) => {
       dispatch({type: 'left'})
+      console.log(e)
     },
     onSwipedRight: () => {
       dispatch({type: 'right'})

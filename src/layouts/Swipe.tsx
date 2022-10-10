@@ -1,26 +1,27 @@
-import React, { ReactNode } from 'react'
+import React, { useState, ReactNode } from 'react'
 import { useSwipeable } from 'react-swipeable'
-import { SwipeContainer } from './Swipe.styled'
+import { Drawer, SwipeContainer } from './Swipe.styled'
 
 interface ISwipe {
     children: ReactNode[]
 }
 
 const Swipe = ({children}: ISwipe) => {
+    const [menuExp, setmenuExp] = useState(false)
     const handlers = useSwipeable({
-        onSwipedRight: (eventData) => {
-            if (eventData.velocity > 0.5) {
-                document.location.href=`${window.origin}/new`
-            }
-        },
         onSwipedLeft: (eventData) => {
             if (eventData.velocity > 0.5) {
-                document.location.href=`${window.origin}`
+                setmenuExp(false)
+            }
+        },
+        onSwipedRight: (eventData) => {
+            if (eventData.velocity > 0.5) {
+                setmenuExp(true)
             }
         }
     })
   return (
-    <SwipeContainer {...handlers}>{children}</SwipeContainer>
+    <SwipeContainer {...handlers}><Drawer expand={menuExp} />{children}</SwipeContainer>
   )
 }
 

@@ -6,5 +6,4 @@ export const Pod = styled.section`
     border-radius: 4px;
     width: 280px;
     height: 190px;
-    padding: 8px;
 `;
