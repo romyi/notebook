@@ -1,5 +1,6 @@
 import React, { useState, ReactNode } from 'react'
 import { useSwipeable } from 'react-swipeable'
+import { Editor } from '../components'
 import { Drawer, SwipeContainer } from './Swipe.styled'
 
 interface ISwipe {
@@ -21,7 +22,12 @@ const Swipe = ({children}: ISwipe) => {
         }
     })
   return (
-    <SwipeContainer {...handlers}><Drawer expand={menuExp} />{children}</SwipeContainer>
+    <SwipeContainer {...handlers}>
+        <Drawer expand={menuExp}>
+            <Editor />
+        </Drawer>
+        {children}
+    </SwipeContainer>
   )
 }
 

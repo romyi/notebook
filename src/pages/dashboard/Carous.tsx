@@ -32,7 +32,6 @@ const Carous = ({children}: ICarous) => {
   const handlers = useSwipeable({
     onSwipedLeft: (e) => {
       dispatch({type: 'left'})
-      console.log(e)
     },
     onSwipedRight: () => {
       dispatch({type: 'right'})

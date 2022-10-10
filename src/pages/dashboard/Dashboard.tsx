@@ -7,9 +7,6 @@ import { Pod } from './Dashboard.styled'
 const Dashboard = () => {
   return (
     <Mobile>
-      <Pod>
-        <h4>Доброе, timeflyeswhenyouhf@internet.ru</h4>
-      </Pod>
       <Carous>
         <CarouselPod><h3>shall will</h3><p>будущее время</p></CarouselPod>
         <CarouselPod><h2>9932</h2></CarouselPod>

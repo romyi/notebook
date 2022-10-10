@@ -12,7 +12,7 @@ export const SwipeContainer = styled.div`
     min-height: ${(props: ISwipeContainer) => props.height ?? '100vh'};
 `;
 
-export const Drawer = styled.nav`
+export const Drawer = styled.article`
     position: absolute;
     z-index: 100;
     width: 100%;

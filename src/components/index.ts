@@ -1,3 +1,4 @@
 import Link from "./Link";
+import Editor from './Editor';
 
-export { Link }
+export { Link, Editor }
