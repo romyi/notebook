@@ -11,12 +11,12 @@ const Swipe = ({children}: ISwipe) => {
     const [menuExp, setmenuExp] = useState(false)
     const handlers = useSwipeable({
         onSwipedLeft: (eventData) => {
-            if (eventData.velocity > 0.5) {
+            if (eventData.velocity > 1) {
                 setmenuExp(false)
             }
         },
         onSwipedRight: (eventData) => {
-            if (eventData.velocity > 0.5) {
+            if (eventData.velocity > 1) {
                 setmenuExp(true)
             }
         }
