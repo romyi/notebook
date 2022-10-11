@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
 
 interface IRibbon {
-    display: boolean
+    show: boolean
 }
 
 export const EditorBlock = styled.pre`
     padding: 12px;
+    h4, h5 {
+        color: #4f4f4f;
+    }
 `;
 
 export const EditorText = styled.textarea`
@@ -15,12 +18,12 @@ export const EditorText = styled.textarea`
     &:focus-visible {
         outline: 0;
     }
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 16px;
     background-color: snow;
 `;
 
-export const Ribbon = styled.section`
+export const Ribbon = styled.section`${(props: IRibbon) => `
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -28,6 +31,7 @@ export const Ribbon = styled.section`
     width: 100%;
     transition: height 0.2s ease;
     overflow: hidden;
-    height: ${(props: IRibbon) => props.display ? '180px' : '0px'};
-    background-color: teal;
-`;
+    padding: ${props.show ? '12px' : 'none'};
+    height: ${props.show ? 'auto' : '0px'};
+    background-color: #f2f2f2;
+`}`;

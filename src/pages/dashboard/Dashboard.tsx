@@ -7,12 +7,9 @@ import { Pod } from './Dashboard.styled'
 const Dashboard = () => {
   return (
     <Mobile>
-      <Carous>
-        <CarouselPod><h3>shall will</h3><p>будущее время</p></CarouselPod>
-        <CarouselPod><h2>9932</h2></CarouselPod>
-        <CarouselPod><h2>dae</h2></CarouselPod>
-        <CarouselPod><h2>abnc</h2></CarouselPod>
-        <CarouselPod><h2>ppaaaq</h2></CarouselPod>
+      <Carous cards={1.3}>
+        <CarouselPod><h2>1</h2></CarouselPod>
+        <CarouselPod><h2>2</h2></CarouselPod>
       </Carous>
     </Mobile>
   )
