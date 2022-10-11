@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
 interface IRibbon {
-    offsetx?: number
+    display: boolean
 }
 
-export const EditorBlock = styled.section`
+export const EditorBlock = styled.pre`
     padding: 12px;
 `;
 
@@ -22,9 +22,12 @@ export const EditorText = styled.textarea`
 
 export const Ribbon = styled.section`
     position: absolute;
-    left: ${(props: IRibbon) => props.offsetx ?? 0}px;
-    z-index: 10;
-    width: 100px;
-    height: 80px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 110;
+    width: 100%;
+    transition: height 0.2s ease;
+    overflow: hidden;
+    height: ${(props: IRibbon) => props.display ? '180px' : '0px'};
     background-color: teal;
 `;
