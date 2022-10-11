@@ -11,7 +11,8 @@ const Editor = () => {
     }, [])
     const change = (e: React.FormEvent<HTMLTextAreaElement>) => {
       const sel = e.currentTarget.selectionEnd;
-      px.current = (sel+(sel < 6 ? 4 : 8)) * 6
+      console.log(sel)
+      px.current = 26 + sel * 9 - (sel * 2)
       settext(e.currentTarget.value)
       e.currentTarget.value.split(' ').includes('aa') ? setshowr(true) : setshowr(false)
     }
