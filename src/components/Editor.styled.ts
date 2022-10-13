@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 interface IRibbon {
     show: boolean
+    h: number
 }
 
 export const EditorBlock = styled.pre`
@@ -25,8 +26,10 @@ export const EditorText = styled.textarea`
 
 export const Ribbon = styled.section`${(props: IRibbon) => `
     position: absolute;
-    bottom: 0px;
+    top: 0px;
     left: 0px;
+    transform-origin: bottom;
+    transform: translateY(${window.outerHeight - props.h}px);
     z-index: 110;
     width: 100%;
     transition: height 0.2s ease;
