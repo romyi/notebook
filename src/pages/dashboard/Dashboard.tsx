@@ -5,10 +5,13 @@ import { CarouselPod } from './Carous.styled'
 const Dashboard = () => {
   return (
     <Mobile>
-      <Carous cards={[1.6, 1, 1.4]}>
+      <Carous>
         <CarouselPod><h2>1</h2></CarouselPod>
         <CarouselPod><h2>2</h2></CarouselPod>
-        <CarouselPod><h1>4</h1></CarouselPod>
+        <CarouselPod><h2>3</h2></CarouselPod>
+        <CarouselPod><h2>4</h2></CarouselPod>
+        <CarouselPod><h2>5</h2></CarouselPod>
+        <CarouselPod><h1>6</h1></CarouselPod>
       </Carous>
     </Mobile>
   )

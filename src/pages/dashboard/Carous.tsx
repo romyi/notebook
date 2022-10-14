@@ -32,11 +32,15 @@ const Carous = ({children, cards}: ICarous) => {
   const carouselReducer = useMemo(() => buildCarouselReducer(React.Children.count(children), cards ?? Array(children.length).fill(1.3)), []);
   const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 0})
   const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      dispatch({type: 'left' })
+    onSwipedLeft: (eventData) => {
+      for (let index = 0; index < eventData.velocity*1.6; index++) {
+        dispatch({type: 'left' })
+      }
     },
-    onSwipedRight: () => {
-      dispatch({type: 'right'})
+    onSwipedRight: (eventData) => {
+      for (let index = 0; index < eventData.velocity*1.6; index++) {
+        dispatch({type: 'right' })
+      }
     }
   })
   return (
