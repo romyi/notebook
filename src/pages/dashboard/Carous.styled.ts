@@ -11,7 +11,7 @@ interface ICarouselBlock {
 export const CarouselHolder = styled.div`
     display: flex;
     min-width: 100%;
-    transition: transform 0.7s ease;
+    transition: transform 0.3s ease-in-out;
     transform-origin: left;
     transform: translateX(${(props: IHolder) => props.delta ?? 0}%);
 `;
