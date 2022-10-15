@@ -31,11 +31,26 @@ const buildCarouselReducer = (total: number, cards: number[]) => (state: any, ac
 const Carous = ({children, cards, nondiscrete}: ICarous) => {
   const wrchildren = React.Children.map(children, (child, ix) => <CarouselBlock cards={cards ? cards[ix] : 1.3}>{child}</CarouselBlock>);
   const [scaledd, setscaledd] = useState(0);
-  let d = 110
+  const [prev, setprev] = useState(0);
+  let d = 80
   const carouselReducer = useMemo(() => buildCarouselReducer(React.Children.count(children), cards ?? Array(children.length).fill(1.3)), []);
   const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 0})
   useEffect(() => {
-    dispatch({type: scaledd < 0 ? 'left' : 'right'});
+    setprev(scaledd);
+    if (scaledd < 0) {
+      if (prev > scaledd) {
+        dispatch({type: 'left'})
+      } else {
+        dispatch({type: 'right'})
+      }
+    }
+    if (scaledd > 0) {
+      if (prev < scaledd) {
+        dispatch({type: 'right'})
+      } else {
+        dispatch({type: 'left'})
+      }
+    }
   }, [scaledd])
   const handlers = useSwipeable({
     onSwipedLeft: nondiscrete ? undefined : (eventData) => {
@@ -49,7 +64,7 @@ const Carous = ({children, cards, nondiscrete}: ICarous) => {
       }
     },
     onSwiping: nondiscrete ? (eventData) => {
-      setscaledd(eventData.deltaX < 0 ? Math.ceil(eventData.deltaX / d) : Math.floor(eventData.deltaX / d))
+      setscaledd(eventData.deltaX < 0 ? Math.floor(eventData.deltaX / d): Math.ceil(eventData.deltaX / d))
     } : undefined
   })
   return (
