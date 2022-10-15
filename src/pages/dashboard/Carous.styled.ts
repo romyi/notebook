@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 interface IHolder {
     delta?: number
+    smooth?: boolean
 }
 
 interface ICarouselBlock {
@@ -11,7 +12,7 @@ interface ICarouselBlock {
 export const CarouselHolder = styled.div`
     display: flex;
     min-width: 100%;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ${(props: IHolder) => props.smooth ? 'linear' : 'ease-in-out'};
     transform-origin: left;
     transform: translateX(${(props: IHolder) => props.delta ?? 0}%);
 `;

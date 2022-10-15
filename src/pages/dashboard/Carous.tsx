@@ -1,9 +1,10 @@
-import React, { ReactNode, useMemo, useReducer, useRef } from 'react'
+import React, { ReactNode, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { useSwipeable } from 'react-swipeable';
 import { CarouselBlock, CarouselHolder } from './Carous.styled'
 interface ICarous {
   children: ReactNode[],
-  cards?: number[]
+  cards?: number[],
+  nondiscrete?: boolean
 }
 
 const buildCarouselReducer = (total: number, cards: number[]) => (state: any, action: any) => {
@@ -27,24 +28,32 @@ const buildCarouselReducer = (total: number, cards: number[]) => (state: any, ac
   }
 }
 
-const Carous = ({children, cards}: ICarous) => {
+const Carous = ({children, cards, nondiscrete}: ICarous) => {
   const wrchildren = React.Children.map(children, (child, ix) => <CarouselBlock cards={cards ? cards[ix] : 1.3}>{child}</CarouselBlock>);
+  const [scaledd, setscaledd] = useState(0);
+  let d = 110
   const carouselReducer = useMemo(() => buildCarouselReducer(React.Children.count(children), cards ?? Array(children.length).fill(1.3)), []);
   const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 0})
+  useEffect(() => {
+    dispatch({type: scaledd < 0 ? 'left' : 'right'});
+  }, [scaledd])
   const handlers = useSwipeable({
-    onSwipedLeft: (eventData) => {
+    onSwipedLeft: nondiscrete ? undefined : (eventData) => {
       for (let index = 0; index < eventData.velocity*1.6; index++) {
         dispatch({type: 'left' })
       }
     },
-    onSwipedRight: (eventData) => {
+    onSwipedRight: nondiscrete ? undefined : (eventData) => {
       for (let index = 0; index < eventData.velocity*1.6; index++) {
         dispatch({type: 'right' })
       }
-    }
+    },
+    onSwiping: nondiscrete ? (eventData) => {
+      setscaledd(eventData.deltaX < 0 ? Math.ceil(eventData.deltaX / d) : Math.floor(eventData.deltaX / d))
+    } : undefined
   })
   return (
-    <CarouselHolder {...handlers} delta={state.delta}>{wrchildren}</CarouselHolder>
+    <CarouselHolder smooth={nondiscrete} {...handlers} delta={state.delta}>{wrchildren}</CarouselHolder>
   )
 }
 
