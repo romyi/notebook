@@ -5,7 +5,7 @@ import { CarouselPod } from './Carous.styled'
 const Dashboard = () => {
   return (
     <Mobile>
-      <Carous nondiscrete cards={[1.2, 1.5, 1, 2, 2.3, 2.3, 1.2]}>
+      <Carous continious cards={[1.2, 1.5, 1, 2, 2.3, 2.3, 1.2]}>
         <CarouselPod><h2>1</h2></CarouselPod>
         <CarouselPod><h2>2</h2></CarouselPod>
         <CarouselPod><h2>3</h2></CarouselPod>

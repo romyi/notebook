@@ -4,7 +4,7 @@ import { CarouselBlock, CarouselHolder } from './Carous.styled'
 interface ICarous {
   children: ReactNode[],
   cards?: number[],
-  nondiscrete?: boolean
+  continious?: boolean
 }
 
 const buildCarouselReducer = (total: number, cards: number[]) => (state: any, action: any) => {
@@ -28,7 +28,7 @@ const buildCarouselReducer = (total: number, cards: number[]) => (state: any, ac
   }
 }
 
-const Carous = ({children, cards, nondiscrete}: ICarous) => {
+const Carous = ({children, cards, continious}: ICarous) => {
   const wrchildren = React.Children.map(children, (child, ix) => <CarouselBlock cards={cards ? cards[ix] : 1.3}>{child}</CarouselBlock>);
   const [scaledd, setscaledd] = useState(0);
   const [prev, setprev] = useState(0);
@@ -36,7 +36,6 @@ const Carous = ({children, cards, nondiscrete}: ICarous) => {
   const carouselReducer = useMemo(() => buildCarouselReducer(React.Children.count(children), cards ?? Array(children.length).fill(1.3)), []);
   const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 0})
   useEffect(() => {
-    setprev(scaledd);
     if (scaledd < 0) {
       if (prev > scaledd) {
         dispatch({type: 'left'})
@@ -51,24 +50,28 @@ const Carous = ({children, cards, nondiscrete}: ICarous) => {
         dispatch({type: 'left'})
       }
     }
+    setprev(scaledd);
   }, [scaledd])
   const handlers = useSwipeable({
-    onSwipedLeft: nondiscrete ? undefined : (eventData) => {
+    onSwipedLeft: continious ? undefined : (eventData) => {
       for (let index = 0; index < eventData.velocity*1.6; index++) {
         dispatch({type: 'left' })
       }
     },
-    onSwipedRight: nondiscrete ? undefined : (eventData) => {
+    onSwipedRight: continious ? undefined : (eventData) => {
       for (let index = 0; index < eventData.velocity*1.6; index++) {
         dispatch({type: 'right' })
       }
     },
-    onSwiping: nondiscrete ? (eventData) => {
+    onSwipeStart: continious ? () => {
+      setprev(0)
+    } : undefined,
+    onSwiping: continious ? (eventData) => {
       setscaledd(eventData.deltaX < 0 ? Math.floor(eventData.deltaX / d): Math.ceil(eventData.deltaX / d))
     } : undefined
   })
   return (
-    <CarouselHolder smooth={nondiscrete} {...handlers} delta={state.delta}>{wrchildren}</CarouselHolder>
+    <CarouselHolder smooth={continious} {...handlers} delta={state.delta}>{wrchildren}</CarouselHolder>
   )
 }
 
