@@ -1,9 +1,10 @@
-import React, { ReactNode, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import React, { ReactElement, ReactNode, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { useSwipeable } from 'react-swipeable';
 import { CarouselBlock, CarouselHolder } from './Carous.styled'
+
+
 interface ICarous {
-  children: ReactNode[],
-  cards?: number[],
+  children: ReactElement<{scale?: number}>[],
   continious?: boolean
 }
 
@@ -28,12 +29,18 @@ const buildCarouselReducer = (total: number, cards: number[]) => (state: any, ac
   }
 }
 
-const Carous = ({children, cards, continious}: ICarous) => {
-  const wrchildren = React.Children.map(children, (child, ix) => <CarouselBlock cards={cards ? cards[ix] : 1.3}>{child}</CarouselBlock>);
+const Carous = ({children, continious}: ICarous) => {
+  let reducerarr: number[] = [];
+  const wrchildren = React.Children.map(children, (child, ix) => {
+    reducerarr.push(child.props.scale ?? 1.3)
+    return (
+      <CarouselBlock cards={child.props.scale ?? 1.3}>{child}</CarouselBlock>
+    )
+});
   const [scaledd, setscaledd] = useState(0);
   const [prev, setprev] = useState(0);
   let d = 80
-  const carouselReducer = useMemo(() => buildCarouselReducer(React.Children.count(children), cards ?? Array(children.length).fill(1.3)), []);
+  const carouselReducer = useMemo(() => buildCarouselReducer(React.Children.count(children), reducerarr), []);
   const [state, dispatch] = useReducer(carouselReducer, {delta: 0, ix: 0})
   useEffect(() => {
     if (scaledd < 0) {

@@ -1,4 +1,5 @@
-import styled from "@emotion/styled";
+import styled, { StyledComponent } from "@emotion/styled";
+import { ReactElement } from "react";
 
 interface IHolder {
     delta?: number
@@ -23,7 +24,7 @@ export const CarouselBlock = styled.div`
     flex-basis: ${(props: ICarouselBlock) => props.cards ? 100 / props.cards : 100}%;
 `;
 
-export const CarouselPod = styled.div`
+export const CarouselPod = styled.div<{scale?: number}>`
     height: 120px;
     margin: 10px;
     background-color: #f2f2f2;;
