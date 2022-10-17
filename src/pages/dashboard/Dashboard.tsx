@@ -6,12 +6,12 @@ const Dashboard = () => {
   return (
     <Mobile>
       <Carous continious>
-        <CarouselPod scale={2}><h2>1</h2></CarouselPod>
-        <CarouselPod><h2>2</h2></CarouselPod>
-        <CarouselPod><h2>3</h2></CarouselPod>
-        <CarouselPod scale={2}><h2>4</h2></CarouselPod>
-        <CarouselPod><h2>5</h2></CarouselPod>
-        <CarouselPod><h1>6</h1></CarouselPod>
+        <CarouselPod scale={2}></CarouselPod>
+        <CarouselPod></CarouselPod>
+        <CarouselPod></CarouselPod>
+        <CarouselPod scale={2}></CarouselPod>
+        <CarouselPod></CarouselPod>
+        <CarouselPod></CarouselPod>
       </Carous>
     </Mobile>
   )

@@ -25,8 +25,9 @@ export const CarouselBlock = styled.div`
 `;
 
 export const CarouselPod = styled.div<{scale?: number}>`
-    height: 120px;
+    height: 180px;
     margin: 10px;
-    background-color: #f2f2f2;;
+    background: linear-gradient(54deg, rgba(209,246,239,1) 4%, rgba(255,242,253,1) 81%);
+    border-radius: 16px;
     box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.25);
 `;
