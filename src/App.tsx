@@ -8,10 +8,12 @@ function App() {
   return (
     <Appwide>
       <Swipe>
-        <Route path="/"><Dashboard /></Route>
-        <Route path="/about">{() => <h1>что это такое</h1>}</Route>
-        <Route path="/new">{() => <h1>создать</h1>}</Route>
-        <Route path='/start'>{() => <h1>Привет! Начнем?</h1>}</Route>
+        <Route path="/"><p>check token</p></Route>
+        <Route path="/auth"><h1>log</h1></Route>
+        <Route path="/app"><Dashboard /></Route>
+        <Route path="/app/about">{() => <h1>что это такое</h1>}</Route>
+        <Route path="/app/new">{() => <h1>создать</h1>}</Route>
+        <Route path='/app/start'>{() => <h1>Привет! Начнем?</h1>}</Route>
       </Swipe>
     </Appwide>
   )
