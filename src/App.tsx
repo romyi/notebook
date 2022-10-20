@@ -8,7 +8,7 @@ function App() {
   return (
     <Appwide>
       <Swipe>
-        <Route path="/"><p>check token</p></Route>
+        <Route path="/"><p>{import.meta.env.VITE_A}</p></Route>
         <Route path="/auth"><Login /></Route>
         <AuthentificatedAccess to='app'>
           <Route path="/app"><Dashboard /></Route>
@@ -16,6 +16,7 @@ function App() {
           <Route path="/app/new">{() => <h1>создать</h1>}</Route>
           <Route path='/app/start'>{() => <h1>Привет! Начнем?</h1>}</Route>
         </AuthentificatedAccess>
+        <Route path="/landing">{() => <h2>лэндинг</h2>}</Route>
       </Swipe>
     </Appwide>
   )
