@@ -1,10 +1,9 @@
 export interface AuthState {
-    authenticated: boolean
-    login: () => void
-    logout: () => void
+  authenticated: boolean;
+  login: () => void;
+  logout: () => void;
 }
 
 export interface UiState {
-    theme: 'dark' | 'light'
+  theme: 'dark' | 'light';
 }
-

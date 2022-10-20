@@ -1,14 +1,12 @@
-import React from 'react'
-import { AppWideContainer } from './Appwide.styled'
+import React from 'react';
+import { AppWideContainer } from './Appwide.styled';
 
 interface IAppwide {
-    children: any
+  children: any;
 }
 
-const Appwide = ({children}: IAppwide) => {
-  return (
-    <AppWideContainer>{children}</AppWideContainer>
-  )
-}
+const Appwide = ({ children }: IAppwide) => {
+  return <AppWideContainer>{children}</AppWideContainer>;
+};
 
-export default Appwide
+export default Appwide;

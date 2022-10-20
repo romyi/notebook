@@ -1,6 +1,6 @@
-import { Mobile } from '../../layouts/Mobile.styled'
-import Carous from './Carous'
-import { CarouselPod } from './Carous.styled'
+import { Mobile } from '../../layouts/Mobile.styled';
+import Carous from './Carous';
+import { CarouselPod } from './Carous.styled';
 
 const Dashboard = () => {
   return (
@@ -14,7 +14,7 @@ const Dashboard = () => {
         <CarouselPod></CarouselPod>
       </Carous>
     </Mobile>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

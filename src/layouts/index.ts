@@ -1,4 +1,4 @@
-import Appwide from "./Appwide";
-import Swipe from "./Swipe";
+import Appwide from './Appwide';
+import Swipe from './Swipe';
 
-export {Appwide, Swipe}
+export { Appwide, Swipe };

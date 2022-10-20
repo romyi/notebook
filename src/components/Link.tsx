@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 interface ILinkProps {
-    text: string
+  text: string;
 }
 
-const Link = ({text}: ILinkProps) => {
+const Link = ({ text }: ILinkProps) => {
   return (
-    <h2><a>{text}</a></h2>
-  )
-}
+    <h2>
+      <a>{text}</a>
+    </h2>
+  );
+};
 
-export default Link
+export default Link;
