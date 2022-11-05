@@ -2,7 +2,7 @@ import create from 'zustand';
 import { AuthState } from './docs';
 
 const useAuthStore = create<AuthState>((set) => ({
-  authenticated: false,
+  authenticated: true,
   login() {
     set(() => ({ authenticated: true }));
   },

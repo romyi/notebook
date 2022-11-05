@@ -92,8 +92,9 @@ const Carous = ({ children, continious }: ICarous) => {
       : undefined,
     onSwiping: continious
       ? (eventData) => {
+        (eventData.dir !== 'Down' && eventData.dir !== 'Up') &&
           setscaledd(
-            eventData.deltaX < 0
+            eventData.absX < 0
               ? Math.floor(eventData.deltaX / d)
               : Math.ceil(eventData.deltaX / d)
           );

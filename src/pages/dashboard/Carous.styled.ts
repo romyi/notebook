@@ -1,4 +1,5 @@
 import styled, { StyledComponent } from '@emotion/styled';
+import { keyframes, css } from '@emotion/react';
 import { ReactElement } from 'react';
 
 interface IHolder {
@@ -26,14 +27,48 @@ export const CarouselBlock = styled.div`
     props.cards ? 100 / props.cards : 100}%;
 `;
 
-export const CarouselPod = styled.div<{ scale?: number }>`
+const down = keyframes`
+    from {
+      transform: translateY(0);
+      height: 180px;
+    }
+    50% {
+      transform: translateY(0px);
+      height: 360px;
+    }
+    to {
+      transform: translateY(180px);
+      height: 180px;
+    }
+`
+
+const up = keyframes`
+    from {
+      transform: translateY(180px);
+      height: 180px;
+    }
+    50% {
+      transform: translateY(0px);
+      height: 360px;
+    }
+    to {
+      transform: translateY(0);
+      height: 180px;
+    }
+`;
+
+export const CarouselPod = styled.div<{ scale?: number, expand?: 'idle' | 'first' | 'second' }>`
+  ${(props) => props.expand === 'first' && 
+    css`animation: ${down} 0.5s ease-in-out;
+        animation-fill-mode: forwards;
+  `}
+  ${(props) => props.expand === 'second' && 
+    css`animation: ${up} 0.5s linear;
+    animation-fill-mode: forwards;
+  `}
+  transform-origin: bottom;
   height: 180px;
   margin: 10px;
-  background: linear-gradient(
-    54deg,
-    rgba(209, 246, 239, 1) 4%,
-    rgba(255, 242, 253, 1) 81%
-  );
   border-radius: 16px;
   box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.25);
 `;
