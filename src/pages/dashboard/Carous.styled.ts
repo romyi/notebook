@@ -59,11 +59,11 @@ const up = keyframes`
 
 export const CarouselPod = styled.div<{ scale?: number, expand?: 'idle' | 'first' | 'second' }>`
   ${(props) => props.expand === 'first' && 
-    css`animation: ${down} 0.5s ease-in-out;
+    css`animation: ${down} 0.3s ease-in-out;
         animation-fill-mode: forwards;
   `}
   ${(props) => props.expand === 'second' && 
-    css`animation: ${up} 0.5s linear;
+    css`animation: ${up} 0.3s linear;
     animation-fill-mode: forwards;
   `}
   transform-origin: bottom;
