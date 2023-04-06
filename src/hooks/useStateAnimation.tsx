@@ -44,7 +44,7 @@ export const useStateAnimation = () => {
     [],
   )
   const animate = useCallback(
-    (state: states): object | undefined => {
+    (state: states): { className: string } | undefined => {
       if (state === 'idle') return
       if (state === 'first') {
         return { className: 
