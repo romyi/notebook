@@ -3,6 +3,7 @@ import { Route } from 'wouter';
 import { Appwide, Swipe } from './layouts';
 import { Dashboard, Login } from './pages';
 import AuthentificatedAccess from './authentification/AuthentificatedAccess';
+import { MapLand } from './pages/map-land';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/app/new">{() => <h1>создать</h1>}</Route>
           <Route path="/app/start">{() => <h1>Привет! Начнем?</h1>}</Route>
         </AuthentificatedAccess>
-        <Route path="/landing">{() => <h2>лэндинг</h2>}</Route>
+        <Route path="/landing">{MapLand}</Route>
       </Swipe>
     </Appwide>
   );
